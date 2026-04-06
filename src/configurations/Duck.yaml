@@ -1,0 +1,5 @@
+name: Duck
+weight: 1.0
+maxAmount: 200
+speed: 4
+fullness: 0.15

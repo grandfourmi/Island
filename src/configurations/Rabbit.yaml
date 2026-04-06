@@ -1,0 +1,5 @@
+name: Rabbit
+weight: 2.0
+maxAmount: 150
+speed: 2
+fullness: 0.45
