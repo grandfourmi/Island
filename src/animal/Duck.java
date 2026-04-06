@@ -6,31 +6,10 @@ import configurations.annotation.ConfigAnimals;
 import configurations.service.Animal;
 import configurations.service.ConfigLoader;
 
-@ConfigAnimals(fileName  = "src/main/resources/configurations/Duck.yaml")
+@ConfigAnimals(fileName  = "configurations/Duck.yaml")
 public class Duck extends Animal implements Herbivores, Carnivorous {
 
-    public Duck() {
-        ConfigLoader.load(this);
+    public Duck(int x, int y) {
+        super(x, y);
     }
-
-    @Override
-    public void moving() {
-
-    }
-
-    @Override
-    public Animal makingLove() {
-        return null;
-    }
-
-    @Override
-    public void eating() {
-
-    }
-
-
-
-
-
-
 }

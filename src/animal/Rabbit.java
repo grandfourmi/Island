@@ -5,25 +5,12 @@ import configurations.annotation.ConfigAnimals;
 import configurations.service.Animal;
 import configurations.service.ConfigLoader;
 
-@ConfigAnimals(fileName  = "src/main/resources/configurations/Rabbit.yaml")
+@ConfigAnimals(fileName  = "configurations/Rabbit.yaml")
 public class Rabbit extends Animal implements Herbivores {
 
-    public Rabbit() {
-        ConfigLoader.load(this);
+    public Rabbit(int x, int y) {
+        super(x, y);
     }
 
-    @Override
-    public void moving() {
 
-    }
-
-    @Override
-    public Animal makingLove() {
-        return null;
-    }
-
-    @Override
-    public void eating() {
-
-    }
 }

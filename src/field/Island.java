@@ -1,8 +1,5 @@
 package field;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Island {
 
     private final Cell [][] cells ;
@@ -22,6 +19,15 @@ public class Island {
     }
 
     public Cell getCell(int x, int y) {
+
         return cells[x][y];
+    }
+
+    public int getWidth() {
+        return cells.length;
+    }
+
+    public int getHeight() {
+        return cells[0].length;
     }
 }
