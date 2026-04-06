@@ -1,5 +1,6 @@
-package animal;
+package animal.notReady;
 
+import configurations.service.Animal;
 import animal.Interfaces.Carnivorous;
 
 
@@ -12,7 +13,7 @@ public class Eagle extends Animal implements Carnivorous {
 
 
     public Eagle() {
-        weight = 6.0;
+        weightHP = 6.0;
 
     }
 
@@ -22,7 +23,7 @@ public class Eagle extends Animal implements Carnivorous {
     }
 
     @Override
-    void setWeight(double weight) {
+    void setWeightHP(double weightHP) {
 
     }
 

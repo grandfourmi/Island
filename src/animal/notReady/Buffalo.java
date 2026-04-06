@@ -1,5 +1,6 @@
-package animal;
+package animal.notReady;
 
+import configurations.service.Animal;
 import animal.Interfaces.Herbivores;
 
 // Буйвол
@@ -10,7 +11,7 @@ public class Buffalo extends Animal implements Herbivores {
     static int MAX_QUANTITY = 10;
 
     public Buffalo() {
-        weight = 700.0;
+        weightHP = 700.0;
     }
 
     @Override
@@ -19,7 +20,7 @@ public class Buffalo extends Animal implements Herbivores {
     }
 
     @Override
-    void setWeight(double weight) {
+    void setWeightHP(double weightHP) {
 
     }
 

@@ -1,29 +1,29 @@
 package animal;
 
 import animal.Interfaces.Herbivores;
+import configurations.annotation.ConfigAnimals;
+import configurations.service.Animal;
+import configurations.service.ConfigLoader;
 
+@ConfigAnimals(fileName  = "src/main/resources/configurations/Rabbit.yaml")
 public class Rabbit extends Animal implements Herbivores {
 
-    static double FULLNESS = 0.45;
-    static int SPEED = 2;
-    static int MAX_QUANTITY = 150;
-
     public Rabbit() {
-        weight = 2.0;
+        ConfigLoader.load(this);
     }
 
     @Override
-    void moving() {
-
-    }
-
-    @Override
-    void setWeight(double weight) {
+    public void moving() {
 
     }
 
     @Override
-    public void run() {
+    public Animal makingLove() {
+        return null;
+    }
+
+    @Override
+    public void eating() {
 
     }
 }

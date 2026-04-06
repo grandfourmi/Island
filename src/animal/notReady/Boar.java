@@ -1,5 +1,6 @@
-package animal;
+package animal.notReady;
 
+import configurations.service.Animal;
 import animal.Interfaces.Herbivores;
 
 // Это кабан
@@ -11,7 +12,7 @@ public class Boar extends Animal implements Herbivores {
 
 
     public Boar() {
-        weight = 400.0;
+        weightHP = 400.0;
 
     }
 
@@ -22,7 +23,7 @@ public class Boar extends Animal implements Herbivores {
 
 
     @Override
-    void setWeight(double weight) {
+    void setWeightHP(double weightHP) {
 
     }
 

@@ -1,5 +1,6 @@
-package animal;
+package animal.notReady;
 
+import configurations.service.Animal;
 import animal.Interfaces.Herbivores;
 
 public class Deer extends Animal implements Herbivores {
@@ -10,7 +11,7 @@ public class Deer extends Animal implements Herbivores {
 
 
     public Deer() {
-        weight = 300.0;
+        weightHP = 300.0;
 
     }
 
@@ -20,7 +21,7 @@ public class Deer extends Animal implements Herbivores {
     }
 
     @Override
-    void setWeight(double weight) {
+    void setWeightHP(double weightHP) {
 
     }
 

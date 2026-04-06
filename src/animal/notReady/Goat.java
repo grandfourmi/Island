@@ -1,6 +1,7 @@
-package animal;
+package animal.notReady;
 
 
+import configurations.service.Animal;
 import animal.Interfaces.Herbivores;
 
 public class Goat extends Animal implements Herbivores {
@@ -11,7 +12,7 @@ public class Goat extends Animal implements Herbivores {
 
 
     public Goat() {
-        weight = 60.0;
+        weightHP = 60.0;
 
     }
 
@@ -21,7 +22,7 @@ public class Goat extends Animal implements Herbivores {
     }
 
     @Override
-    void setWeight(double weight) {
+    void setWeightHP(double weightHP) {
 
     }
 

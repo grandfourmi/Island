@@ -2,31 +2,35 @@ package animal;
 
 import animal.Interfaces.Carnivorous;
 import animal.Interfaces.Herbivores;
+import configurations.annotation.ConfigAnimals;
+import configurations.service.Animal;
+import configurations.service.ConfigLoader;
 
+@ConfigAnimals(fileName  = "src/main/resources/configurations/Duck.yaml")
 public class Duck extends Animal implements Herbivores, Carnivorous {
 
-    static double FULLNESS = 0.15;
-    static int SPEED = 4;
-    static int MAX_QUANTITY = 200;
-
-
     public Duck() {
-        weight = 1.0;
+        ConfigLoader.load(this);
+    }
+
+    @Override
+    public void moving() {
 
     }
 
     @Override
-    void moving() {
-
+    public Animal makingLove() {
+        return null;
     }
 
     @Override
-    void setWeight(double weight) {
+    public void eating() {
 
     }
 
-    @Override
-    public void run() {
 
-    }
+
+
+
+
 }

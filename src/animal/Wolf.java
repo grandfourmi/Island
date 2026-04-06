@@ -1,30 +1,32 @@
 package animal;
 
 import animal.Interfaces.Carnivorous;
+import configurations.annotation.ConfigAnimals;
+import configurations.service.Animal;
+import configurations.service.ConfigLoader;
 
+
+@ConfigAnimals(fileName  = "src/main/resources/configurations/Wolf.yaml")
 public class Wolf extends Animal implements Carnivorous{
 
-    static double FULLNESS = 8;
-    static int SPEED = 3;
-    static int MAX_QUANTITY = 30;
-
     public Wolf() {
-        weight = 50.0;
+
+        ConfigLoader.load(this);
 
     }
 
     @Override
-    void moving() {
+    public void moving() {
 
     }
 
     @Override
-    void setWeight(double weight) {
-
+    public Animal makingLove() {
+        return null;
     }
 
     @Override
-    public void run() {
+    public void eating() {
 
     }
 }

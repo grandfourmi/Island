@@ -1,6 +1,6 @@
 package field;
 
-import animal.Animal;
+import configurations.service.Animal;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +15,7 @@ public class Cell {
         this.x = x;
         this.y = y;
         listAnimals = new HashMap<>();
+
     }
 
     public Map<Animal, Integer> getListAnimals() {
