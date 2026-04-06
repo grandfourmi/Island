@@ -35,4 +35,8 @@ public class Cell {
             listAnimals.put(type, count - 1);
         }
     }
+
+    public synchronized int getCountOfType(Class<? extends Animal> aClass) {
+        return listAnimals.getOrDefault(aClass, 0);
+    }
 }

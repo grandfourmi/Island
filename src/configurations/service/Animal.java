@@ -10,6 +10,7 @@ public abstract class Animal {
     public int maxAmount;
     protected String name;
     protected double weight;
+    protected double healthPoints;
     protected int speed;
     protected double fullness;
 
@@ -18,6 +19,7 @@ public abstract class Animal {
 
     public Animal(int x, int y) {
         ConfigLoader.load(this);
+        this.healthPoints = this.weight;
         this.x = x;
         this.y = y;
     }
@@ -59,8 +61,28 @@ public abstract class Animal {
 
         System.out.println(name + " moved to (" + x + "," + y + ")");
     }
-    public Animal makingLove() {
-        return null;
+
+    public void makingLove(Island island) {
+        if (this.weight != this.healthPoints) return;
+
+        Cell current = island.getCell(x, y);
+
+        synchronized (current) {
+            int count = current.getCountOfType(this.getClass());
+
+            if (count > 1) {
+                try {
+                    Animal baby = this.getClass()
+                            .getDeclaredConstructor(int.class, int.class)
+                            .newInstance(x, y);
+                    current.tryAddAnimal(baby); // возвращаем новорождённого
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    //Todo прикрутить логирование
+                }
+            }
+        }
+
     }
     public void eating() {
 
