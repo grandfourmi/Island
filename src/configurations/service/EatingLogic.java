@@ -1,6 +1,7 @@
 package configurations.service;
 
 import field.Cell;
+import grass.Plant;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,16 +18,29 @@ public class EatingLogic {
         this.rules = rules;
     }
 
-    public void eat(Animal predator, Cell cell) {
+    public void eat(Animal animal, Cell cell) {
 
-        String predatorType = predator.getClass().getSimpleName().toUpperCase();
+        String animalType = animal.getClass().getSimpleName().toUpperCase();
 
         Map<String, Integer> preyMap =
-                rules.eatMap.getOrDefault(predatorType, new HashMap<>());
+                rules.eatMap.getOrDefault(animalType, new HashMap<>());
 
         if (preyMap.isEmpty()) return;
 
+
+        if (preyMap.containsKey("PLANT") && cell.getPlantCount() > 0) {
+
+            cell.consumePlant();
+
+            double eaten = Math.min(Plant.WEIGHT, animal.fullness);
+            animal.healthPoints += eaten;
+
+            return;
+        }
+
+
         List<Animal> candidates = cell.getAnimals().stream()
+                .filter(a -> a != animal)
                 .filter(a -> preyMap.containsKey(
                         a.getClass().getSimpleName().toUpperCase()
                 ))
@@ -45,9 +59,9 @@ public class EatingLogic {
 
             cell.removeAnimal(prey);
 
-            predator.healthPoints += prey.weight;
+            double eaten = Math.min(prey.weight, animal.fullness);
+            animal.healthPoints += eaten;
 
-            System.out.println(predator.name + " ate " + preyType);
         }
     }
 }

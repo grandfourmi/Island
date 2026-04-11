@@ -1,9 +1,9 @@
 package field;
 
 import configurations.service.Animal;
+import grass.Plant;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -12,6 +12,8 @@ public class Cell {
 
     private final int x;
     private final int y;
+
+    private int plantCount;
 
     private final Map<Class <? extends Animal>, List<Animal>> listAnimals = new ConcurrentHashMap<>();
 
@@ -45,7 +47,7 @@ public class Cell {
         }
     }
 
-    public synchronized List<Animal> getCountOfType(Class<? extends Animal> aClass) {
+    public synchronized List<Animal> getAnimalsByType(Class<? extends Animal> aClass) {
         return listAnimals.getOrDefault(aClass, new ArrayList<>());
     }
 
@@ -58,5 +60,21 @@ public class Cell {
         }
 
         return result;
+    }
+
+    public synchronized int getPlantCount() {
+        return plantCount;
+    }
+
+    public synchronized void addPlant(int amount) {
+        plantCount = Math.min(plantCount + amount, Plant.MAX_QUANTITY);
+    }
+
+    public synchronized boolean consumePlant() {
+        if (plantCount > 0) {
+            plantCount--;
+            return true;
+        }
+        return false;
     }
 }

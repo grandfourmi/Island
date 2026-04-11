@@ -11,16 +11,16 @@ public class MakingLoveLogic {
         Cell current = island.getCell(animal.x, animal.y);
 
         synchronized (current) {
-            int count = current.getCountOfType(animal.getClass());
+            int count = current.getAnimalsByType(animal.getClass()).size();
 
-            if (count > 1) {
+            if (count > 1 && count < animal.maxAmount) {
                 try {
-                    if (current.getCountOfType(animal.getClass()) < animal.maxAmount) {
                         Animal baby = animal.getClass()
                                 .getDeclaredConstructor(int.class, int.class)
                                 .newInstance(animal.x, animal.y);
+
                         current.tryAddAnimal(baby);
-                    }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                     //Todo прикрутить логирование
