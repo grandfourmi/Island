@@ -6,7 +6,7 @@ import field.Island;
 public class MakingLoveLogic {
 
     public void makingLove( Animal animal,Island island) {
-        if (animal.weight != animal.healthPoints) return;
+        if (animal.healthPoints < animal.weight * 0.99) return;
 
         Cell current = island.getCell(animal.x, animal.y);
 
