@@ -1,8 +1,9 @@
-package configurations.simulation.phases;
+package simulation.phases;
 
-import configurations.service.Animal;
+import animal.Animal;
 import field.Cell;
 import field.Island;
+import simulation.TickStats;
 
 
 public class ReproducePhase implements Phase {
@@ -13,8 +14,9 @@ public class ReproducePhase implements Phase {
         this.island = island;
     }
 
+
     @Override
-    public void process(Cell cell) {
+    public void process(Cell cell, TickStats tickStats) {
         for (Animal animal : cell.getAnimals()) {
             animal.reproduce(island);
         }

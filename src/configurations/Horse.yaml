@@ -1,0 +1,5 @@
+name: Horse
+weight: 400
+maxAmount: 20
+speed: 3
+fullness: 1

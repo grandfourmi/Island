@@ -1,4 +1,4 @@
-package configurations.service;
+package configurations.loader;
 
 import java.util.Map;
 

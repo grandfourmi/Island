@@ -1,7 +1,10 @@
-package configurations.service;
+package logic;
 
+import configurations.loader.EatConfig;
+import animal.Animal;
 import field.Cell;
 import grass.Plant;
+import simulation.TickStats;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,16 +12,14 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
-
 public class EatingLogic {
-
     private final EatConfig rules;
 
     public EatingLogic(EatConfig rules) {
         this.rules = rules;
     }
 
-    public void eat(Animal animal, Cell cell) {
+    public void eat(Animal animal, Cell cell, TickStats stats) {
 
         String animalType = animal.getClass().getSimpleName().toUpperCase();
 
@@ -27,17 +28,14 @@ public class EatingLogic {
 
         if (preyMap.isEmpty()) return;
 
-
         if (preyMap.containsKey("PLANT") && cell.getPlantCount() > 0) {
 
-            cell.consumePlant();
-
-            double eaten = Math.min(Plant.WEIGHT, animal.fullness);
-            animal.healthPoints += eaten;
-
+            if (cell.consumePlant()) {
+                double eaten = Math.min(Plant.WEIGHT, animal.getFullness());
+                animal.setHealthPoints(animal.getHealthPoints() + eaten);
+            }
             return;
         }
-
 
         List<Animal> candidates = cell.getAnimals().stream()
                 .filter(a -> a != animal)
@@ -49,8 +47,7 @@ public class EatingLogic {
         if (candidates.isEmpty()) return;
 
         Animal prey = candidates.get(
-                ThreadLocalRandom.current().nextInt(candidates.size())
-        );
+                ThreadLocalRandom.current().nextInt(candidates.size()));
 
         String preyType = prey.getClass().getSimpleName().toUpperCase();
         int chance = preyMap.getOrDefault(preyType, 0);
@@ -59,8 +56,10 @@ public class EatingLogic {
 
             cell.removeAnimal(prey);
 
-            double eaten = Math.min(prey.weight, animal.fullness);
-            animal.healthPoints += eaten;
+            stats.eaten.incrementAndGet();
+
+            double eaten = Math.min(prey.getWeight(), animal.getFullness());
+            animal.setHealthPoints(animal.getHealthPoints() + eaten);
 
         }
     }

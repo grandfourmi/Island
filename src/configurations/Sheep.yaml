@@ -1,0 +1,5 @@
+name: Sheep
+weight: 70
+maxAmount: 140
+speed: 3
+fullness: 15

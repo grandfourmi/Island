@@ -1,8 +1,9 @@
-package configurations.simulation.phases;
+package simulation.phases;
 
-import configurations.service.Animal;
+import animal.Animal;
 import field.Cell;
 import field.Island;
+import simulation.TickStats;
 
 public class MovePhase implements Phase {
 
@@ -13,7 +14,7 @@ public class MovePhase implements Phase {
     }
 
     @Override
-    public void process(Cell cell) {
+    public void process(Cell cell, TickStats stats) {
         for (Animal animal : cell.getAnimals()) {
             animal.move(island);
         }

@@ -1,6 +1,6 @@
-package configurations.simulation;
+package simulation;
 
-import configurations.simulation.phases.Phase;
+import simulation.phases.Phase;
 import field.Island;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class PhaseExecutor {
         this.executor = Executors.newFixedThreadPool(threads);
     }
 
-    public void execute(Phase phase) throws InterruptedException {
+    public void execute(Phase phase, TickStats stats) throws InterruptedException {
         List<Callable<Void>> tasks = new ArrayList<>();
 
         for (int x = 0; x < island.getWidth(); x++) {
@@ -27,7 +27,7 @@ public class PhaseExecutor {
 
             tasks.add(() -> {
                 for (int y = 0; y < island.getHeight(); y++) {
-                    phase.process(island.getCell(finalX, y));
+                    phase.process(island.getCell(finalX, y), stats);
                 }
                 return null;
             });

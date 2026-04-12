@@ -2,7 +2,7 @@ package field;
 
 public class Island {
 
-    private final Cell [][] cells ;
+    private final Cell[][] cells;
     private int x;
     private int y;
 

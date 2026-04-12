@@ -1,0 +1,5 @@
+name: Caterpillar
+weight: 0.1
+maxAmount: 1000
+speed: 0
+fullness: 0

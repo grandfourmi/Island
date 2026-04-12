@@ -1,0 +1,5 @@
+name: Deer
+weight: 300
+maxAmount: 20
+speed: 4
+fullness: 50

@@ -1,7 +1,9 @@
-package configurations.service;
+package configurations.loader;
 
 import configurations.annotation.ConfigAnimals;
+import animal.Animal;
 import org.yaml.snakeyaml.Yaml;
+
 import java.io.InputStream;
 
 public class ConfigLoader {
@@ -15,12 +17,8 @@ public class ConfigLoader {
         Yaml yaml = new Yaml();
         AnimalConfig cfg = yaml.loadAs(input, AnimalConfig.class);
 
+        animal.applyConfig(cfg);
 
-        animal.name = cfg.name;
-        animal.weight = cfg.weight;
-        animal.maxAmount = cfg.maxAmount;
-        animal.speed = cfg.speed;
-        animal.fullness = cfg.fullness;
     }
 }
 

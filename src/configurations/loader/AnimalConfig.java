@@ -1,4 +1,4 @@
-package configurations.service;
+package configurations.loader;
 
 public class AnimalConfig {
     public String name;

@@ -1,0 +1,5 @@
+name: Buffalo
+weight: 700
+maxAmount: 10
+speed: 3
+fullness: 100

@@ -1,6 +1,6 @@
-import configurations.service.EatConfig;
-import configurations.service.EatConfigLoader;
-import configurations.service.EatingLogic;
+import configurations.loader.EatConfig;
+import configurations.loader.EatConfigLoader;
+import logic.EatingLogic;
 
 public class IslandApp {
 

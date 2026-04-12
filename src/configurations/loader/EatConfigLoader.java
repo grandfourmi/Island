@@ -1,4 +1,4 @@
-package configurations.service;
+package configurations.loader;
 
 import org.yaml.snakeyaml.Yaml;
 
@@ -13,7 +13,7 @@ public class EatConfigLoader {
                 .getResourceAsStream("configurations/eatMap.yaml");
 
         if (input == null) {
-            // Todo проверку входных данных
+            throw new RuntimeException("eatMap.yaml not found");
         }
         Yaml yaml = new Yaml();
         return yaml.loadAs(input, EatConfig.class);
