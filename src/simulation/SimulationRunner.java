@@ -12,13 +12,17 @@ public class SimulationRunner {
     private final EatPhase eatPhase;
     private final ReproducePhase reproducePhase;
     private final StarvationPhase starvationPhase;
+    private final SimulationConfig config;
 
     private final PlantGrowthLogic plantGrowth = new PlantGrowthLogic();
 
-    public SimulationRunner(Island island) {
+    public SimulationRunner(Island island, SimulationConfig config) {
         this.island = island;
+        this.config = config;
+
         int threads = Runtime.getRuntime().availableProcessors();
         this.executor = new PhaseExecutor(island, threads);
+
         this.movePhase = new MovePhase(island);
         this.eatPhase = new EatPhase();
         this.reproducePhase = new ReproducePhase(island);
@@ -36,12 +40,12 @@ public class SimulationRunner {
 
             runPhases(stats);
 
-            plantGrowth.grow(island, 5);
+            plantGrowth.grow(island, config.plantGrowthRate);
 
             System.out.println("TICK: " + tick);
             Statistics.print(island, stats);
 
-            Thread.sleep(1500);
+            Thread.sleep(3000);
         }
     }
 

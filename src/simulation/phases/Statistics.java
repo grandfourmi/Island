@@ -22,34 +22,33 @@ public class Statistics {
 
                 Cell cell = island.getCell(x, y);
 
-                // считаем животных
                 for (Animal animal : cell.getAnimals()) {
                     String name = animal.getClass().getSimpleName();
                     statsMap.put(name, statsMap.getOrDefault(name, 0) + 1);
                 }
 
-                // считаем растения
+
                 totalPlants += cell.getPlantCount();
             }
         }
 
-        // среднее количество растений на клетку
+
         int avgPlants = totalPlants / cellsCount;
 
         String level;
-        if (avgPlants >= 180) level = "VERY HIGH";
-        else if (avgPlants >= 150) level = "HIGH";
-        else if (avgPlants >= 100) level = "MEDIUM";
-        else level = "LOW";
+        if (avgPlants >= 180) level = "Очень высокое";
+        else if (avgPlants >= 150) level = "Высокое";
+        else if (avgPlants >= 100) level = "Среднее";
+        else level = "Низкое";
 
-        // вывод
-        System.out.println("===== WORLD STATS =====");
+
+        System.out.println("===== Статистика Мира =====");
 
         statsMap.forEach((k, v) -> System.out.println(k + ": " + v));
 
-        System.out.println("Eaten: " + stats.eaten.get());
-        System.out.println("Starved: " + stats.starved.get());
-        System.out.println("Plants level: " + level);
+        System.out.println("Съедены: " + stats.eaten.get());
+        System.out.println("Умерли от голода : " + stats.starved.get());
+        System.out.println("Уровень растительности: " + level);
 
         System.out.println("=======================");
     }

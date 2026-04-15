@@ -35,8 +35,4 @@ public class PhaseExecutor {
 
         executor.invokeAll(tasks);
     }
-
-    public void shutdown() {
-        executor.shutdown();
-    }
 }

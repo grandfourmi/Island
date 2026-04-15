@@ -22,7 +22,6 @@ public class MakingLoveLogic {
 
                 } catch (Exception e) {
                     e.printStackTrace();
-                    //прикрутить логирование
                 }
             }
         }

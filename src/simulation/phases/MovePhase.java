@@ -5,6 +5,8 @@ import field.Cell;
 import field.Island;
 import simulation.TickStats;
 
+import java.util.ArrayList;
+
 public class MovePhase implements Phase {
 
     private final Island island;
@@ -15,7 +17,7 @@ public class MovePhase implements Phase {
 
     @Override
     public void process(Cell cell, TickStats stats) {
-        for (Animal animal : cell.getAnimals()) {
+        for (Animal animal : new ArrayList<>(cell.getAnimals())) {
             animal.move(island);
         }
     }
