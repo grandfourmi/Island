@@ -1,0 +1,5 @@
+name: Bear
+weight: 500
+maxAmount: 5
+speed: 2
+fullness: 2

@@ -1,0 +1,5 @@
+name: Snake
+weight: 15
+maxAmount: 30
+speed: 1
+fullness: 3

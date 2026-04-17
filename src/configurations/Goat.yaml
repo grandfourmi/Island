@@ -1,0 +1,5 @@
+name: Goat
+weight: 60
+maxAmount: 140
+speed: 3
+fullness: 10

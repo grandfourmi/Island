@@ -1,0 +1,5 @@
+name: Wolf
+weight: 50
+maxAmount: 30
+speed: 3
+fullness: 8
