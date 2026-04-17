@@ -16,6 +16,7 @@ public class EatingLogic {
     private final EatConfig rules;
 
     public EatingLogic(EatConfig rules) {
+
         this.rules = rules;
     }
 

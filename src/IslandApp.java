@@ -1,5 +1,3 @@
-package app;
-
 import field.Island;
 import simulation.AnimalSpawner;
 import simulation.SimulationRunner;
